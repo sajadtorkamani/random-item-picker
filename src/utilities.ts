@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from 'uuid'
-import { Item } from '../types'
+import { Item } from './types'
 
 export function uuid(): string {
   return uuidv4()

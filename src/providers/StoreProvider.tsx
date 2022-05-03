@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { IStoreContext, StoreContext } from '../contexts/StoreContext'
-import { loadItems, saveItems, uuid } from '../lib/utilities'
+import { loadItems, saveItems, uuid } from '../utilities'
 import { Item } from '../types'
 
 const StoreProvider: React.FC<{ children: React.ReactNode }> = ({

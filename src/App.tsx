@@ -1,7 +1,8 @@
-import React, { SyntheticEvent, useState } from 'react'
+import React, { SyntheticEvent, useEffect, useMemo, useState } from 'react'
 import {
   AddItemWrapper,
   Button,
+  ClearItemsButton,
   Container,
   Input,
   ItemsList,
@@ -9,21 +10,33 @@ import {
   Wrapper,
 } from './components/styles'
 import Item from './components/Item'
+import { loadItems, saveItems } from './lib/utilities'
 
 const App = () => {
-  const [items, setItems] = useState<string[]>([])
+  const previouslySavedItems = loadItems()
+  const [items, setItems] = useState<string[]>(previouslySavedItems)
   const [item, setItem] = useState<string>('')
 
   const handleAddItem = (event: SyntheticEvent) => {
     event.preventDefault()
 
-    setItems((prevItems) => [item, ...prevItems])
+    const newItems = [item, ...items]
+    setItems(newItems)
     setItem('')
   }
 
-  const isItemValid = () => {
-    return item.trim().length > 0
+  const clearItems = () => {
+    setItems([])
   }
+
+  const hasItems = items.length > 0
+
+  // Save items every item they're updated.
+  useEffect(() => {
+    saveItems(items)
+  }, [items])
+
+  const isItemValid = useMemo(() => item.trim().length > 0, [item])
 
   return (
     <Wrapper>
@@ -33,19 +46,24 @@ const App = () => {
         <form onSubmit={handleAddItem}>
           <AddItemWrapper>
             <Input
+              autoFocus
               type="text"
               placeholder="Add item..."
               value={item}
               onChange={(event) => setItem(event.currentTarget.value)}
             />
 
-            <Button type="submit" disabled={!isItemValid()}>
+            <Button type="submit" disabled={!isItemValid}>
               Add
             </Button>
           </AddItemWrapper>
         </form>
 
-        {items.length > 0 && (
+        {hasItems && (
+          <ClearItemsButton onClick={clearItems}>Clear items</ClearItemsButton>
+        )}
+
+        {hasItems && (
           <ItemsList>
             {items.map((item, index) => (
               <Item key={index}>{item}</Item>

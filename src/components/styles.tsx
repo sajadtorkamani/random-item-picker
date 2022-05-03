@@ -48,9 +48,19 @@ export const Button = styled.button`
 
 export const AddItemWrapper = styled.div`
   display: flex;
-  max-width: 300px;
 `
 
 export const ItemsList = styled.div`
   margin-top: 20px;
+`
+
+export const ClearItemsButton = styled.button`
+  background: none; 
+  border: none;
+  color: ${palette.greyDark};
+  text-decoration: underline;
+  margin-top: 7px;
+  &:hover {
+    cursor: pointer;
+  }
 `

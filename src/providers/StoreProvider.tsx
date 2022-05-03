@@ -24,10 +24,16 @@ const StoreProvider: React.FC<{ children: React.ReactNode }> = ({
     setItems([])
   }
 
+  const removeItem = (itemUuid: string) => {
+    const newItems = items.filter((item) => item.uuid !== itemUuid)
+    setItems(newItems)
+  }
+
   const initialStoreContext: IStoreContext = {
     items,
     addItem,
     clearItems,
+    removeItem,
   }
 
   return (

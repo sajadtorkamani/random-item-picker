@@ -54,8 +54,8 @@ const App = () => {
 
         {hasItems && (
           <ItemsList>
-            {items.map(({ uuid, name }) => (
-              <Item key={uuid}>{name}</Item>
+            {items.map(item => (
+              <Item key={item.uuid} item={item} />
             ))}
           </ItemsList>
         )}

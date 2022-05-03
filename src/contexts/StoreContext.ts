@@ -5,6 +5,7 @@ export interface IStoreContext {
   items: Item[]
   addItem: (name: string) => void
   clearItems: () => void
+  removeItem: (itemUuid: string) => void
 }
 
 export const StoreContext = createContext<IStoreContext | null>(null)

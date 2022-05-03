@@ -1,18 +1,20 @@
 import React from 'react'
 import styled from 'styled-components'
 import { palette } from '../constants'
+import { useStore } from '../hooks/useStore'
+import { Item as IItem } from '../types'
 
-type Props = {
-  children: React.ReactNode
-}
+type Props = { item: IItem }
 
-const Item: React.FC<Props> = ({ children }) => {
+const Item: React.FC<Props> = ({ item }) => {
+  const { removeItem } = useStore()
+
   return (
     <Wrapper>
-      <div>{children}</div>
+      <div>{item.name}</div>
 
       <div>
-        <button>Delete</button>
+        <button onClick={() => removeItem(item.uuid)}>Delete</button>
       </div>
     </Wrapper>
   )

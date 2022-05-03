@@ -1,8 +1,7 @@
 import React from 'react'
-import styled from 'styled-components'
-import { palette } from '../constants'
 import { useStore } from '../hooks/useStore'
 import { Item as IItem } from '../types'
+import ActionButton from './ActionButton'
 
 type Props = { item: IItem }
 
@@ -10,22 +9,19 @@ const Item: React.FC<Props> = ({ item }) => {
   const { removeItem } = useStore()
 
   return (
-    <Wrapper>
+    <div className="border border-gray-400 flex justify-between mb-2.5 p-2.5">
       <div>{item.name}</div>
 
       <div>
-        <button onClick={() => removeItem(item.uuid)}>Remove</button>
+        <ActionButton
+          className="text-red-700"
+          onClick={() => removeItem(item.uuid)}
+        >
+          Remove
+        </ActionButton>
       </div>
-    </Wrapper>
+    </div>
   )
 }
-
-const Wrapper = styled.div`
-  border: 1px solid ${palette.grey};
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 10px;
-  padding: 10px;
-`
 
 export default Item

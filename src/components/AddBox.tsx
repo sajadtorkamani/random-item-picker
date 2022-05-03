@@ -30,8 +30,7 @@ const AddBox: React.FC = () => {
         <button
           type="submit"
           disabled={!isItemValid}
-          className="border border-gray-400 px-2.5 min-w-[60px] h-[36px]
-                cursor-pointer"
+          className="btn px-2.5 min-w-[60px] h-[36px] cursor-pointer"
         >
           Add
         </button>

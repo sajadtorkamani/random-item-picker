@@ -5,7 +5,7 @@ import AddBox from './components/AddBox'
 import ItemList from './components/ItemList'
 
 const App = () => {
-  const { items, clearItems } = useStore()
+  const { items, clearItems, pickRandomItem, pickedItem } = useStore()
 
   const hasItems = items.length > 0
 
@@ -20,6 +20,24 @@ const App = () => {
           <ActionButton className="mt-1.5" onClick={clearItems}>
             Clear items
           </ActionButton>
+        )}
+
+        {items.length > 1 && (
+          <button
+            className="btn block py-2 px-4 my-4 text-center w-full"
+            onClick={pickRandomItem}
+          >
+            Pick random item
+          </button>
+        )}
+
+        {hasItems && !!pickedItem && (
+          <div
+            className="bg-green-400 block py-2 px-4 my-4 text-center w-full
+              text-[20px]"
+          >
+            {pickedItem.name}
+          </div>
         )}
 
         {hasItems && <ItemList />}

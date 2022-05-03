@@ -23,6 +23,7 @@ const StoreProvider: React.FC<{ children: React.ReactNode }> = ({
 
   const clearItems = () => {
     setItems([])
+    setPickedItem(null)
   }
 
   const removeItem = (itemUuid: string) => {

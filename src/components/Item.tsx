@@ -14,7 +14,7 @@ const Item: React.FC<Props> = ({ item }) => {
       <div>{item.name}</div>
 
       <div>
-        <button onClick={() => removeItem(item.uuid)}>Delete</button>
+        <button onClick={() => removeItem(item.uuid)}>Remove</button>
       </div>
     </Wrapper>
   )

@@ -24,7 +24,8 @@ const App = () => {
 
         {items.length > 1 && (
           <button
-            className="btn block py-2 px-4 my-4 text-center w-full"
+            className="btn block text-green-700 py-2 px-4 my-4 text-center
+              w-full border-2 border-green-700"
             onClick={pickRandomItem}
           >
             Pick random item
@@ -33,10 +34,10 @@ const App = () => {
 
         {hasItems && !!pickedItem && (
           <div
-            className="bg-green-400 block py-2 px-4 my-4 text-center w-full
-              text-[20px]"
+            className="flex justify-center items-center bg-green-400 block
+             px-4 h-28 my-4 text-center w-full text-[30px]"
           >
-            {pickedItem.name}
+            <span>{pickedItem.name}</span>
           </div>
         )}
 

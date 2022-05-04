@@ -4,6 +4,8 @@
 
 @layer components {
   .btn {
-    @apply border border-gray-400 hover:bg-gray-100 cursor-pointer;
+    @apply border border-gray-400 bg-white hover:bg-gray-100 cursor-pointer
+    disabled:cursor-default disabled:bg-gray-100 disabled:hover:bg-gray-100
+    disabled:text-gray-400;
   }
 }
